@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Rancho&display=swap');
+
+#form{
+    border: 1px solid green;
+    width: 500px;
+}
+hr{
+    width: 500px;
+    border: 2px solid rgb(243, 31, 31);
+}
+h2{
+    font-family: 'Libre Baskerville', serif;
+    color: rgb(255, 110, 110);
+    font-size: 35px;
+}
