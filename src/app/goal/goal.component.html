@@ -6,8 +6,14 @@
     <div class="col-md-6">
       <div *ngFor='let goal of goals; let i=index'>
         <div>
+<<<<<<< HEAD
           <h4 id={{i}} appStrikethrough>{{goal.name}} <br> Due on {{goal.completeDate|date|uppercase}} </h4>
           
+=======
+          <h4 id={{i}} appStrikethrough>{{goal.name}} <br> due on {{goal.completeDate|date|uppercase}} </h4>
+
+          <button (click)='toggleDetails(i)'class="btn btn-success">Toggle Details</button>
+>>>>>>> gh-pages
           <div *ngIf='goal.showDescription'>
             <app-goal-detail [goal]='goal' (isComplete)="deleteGoal($event,i)"> </app-goal-detail><br>
           </div>
