@@ -7,11 +7,11 @@
       <div *ngFor='let goal of goals; let i=index'>
         <div>
           <h4 id={{i}} appStrikethrough>{{goal.name}} <br> Due on {{goal.completeDate|date|uppercase}} </h4>
-          <!--  -->
-          <button (click)='toggleDetails(i)'class="btn btn-success">Toggle Details</button>
+          
           <div *ngIf='goal.showDescription'>
-            <app-goal-detail [goal]='goal' (isComplete)="deleteGoal($event,i)"> </app-goal-detail>
+            <app-goal-detail [goal]='goal' (isComplete)="deleteGoal($event,i)"> </app-goal-detail><br>
           </div>
+          <button (click)='toggleDetails(i)'class="btn btn-success">Toggle Details</button>
         </div>
       </div>
       <!-- <p *ngIf='goals.length > 5'>You have too many goals</p> -->
