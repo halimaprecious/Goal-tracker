@@ -14,6 +14,13 @@
         </div>
       </div>
       <!-- <p *ngIf='goals.length > 5'>You have too many goals</p> -->
+      <!-- displaying random quotes  -->
+      <div class="row text-center align-items-center mt-5">
+        <blockquote class="blockquote">
+          <p class="mb-o">{{quote.quote}}</p>
+          <footer class="blockquote-footer"><cite>{{quote.author}}</cite></footer>
+        </blockquote>
+      </div>
     </div>
     <div class="col-md-6">
       <app-goal-form (addGoal)="addNewGoal($event)"></app-goal-form>
