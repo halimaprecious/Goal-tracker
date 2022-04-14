@@ -1,8 +1,9 @@
 import { AlertService } from './../alert-service/alert.service';
 import { GoalService } from './../goal-service/goal.service';
-// import { DatePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Goal } from '../goal';
+import { Quote } from '../quote-class/quote';
 @Component({
   selector: 'app-goal',
   templateUrl: './goal.component.html',
@@ -12,6 +13,7 @@ export class GoalComponent implements OnInit {
   
   goals: Goal[] = [];
   alertService!: AlertService;
+  quote!: Quote;
 
   toggleDetails(index:number){
     this.goals[index].showDescription =!this.goals[index].showDescription;
@@ -34,13 +36,21 @@ export class GoalComponent implements OnInit {
     this.goals.push(goal)
   }
   // makes the services available in the component
-  constructor(GoalService:GoalService, alertService:AlertService) { 
+  constructor(GoalService:GoalService, alertService:AlertService, private http:HttpClient) { 
     this.goals =GoalService.getGoals();
     // instantiate the service into th constractor
     this.alertService=alertService;
   }
 
   ngOnInit(){
+    interface ApiResponse{
+      author:string;
+      quote:string;
+    }
+    this.http.get<ApiResponse>("http://quotes.stormconsultancy.co.uk/random.json").subscribe(data=>{
+      //successful API request
+      this.quote =new Quote(data.author,data.quote)
+    })
   }
 
 }
